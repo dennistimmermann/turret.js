@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>turret.js demo page</title>
+  <style type="text/css">
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Ubuntu, Tahoma, "sans-serif";
+      font-size: small;
+    }
+    pre {
+      display: inline-block;
+    }
+    pre,
+    code {
+      background: #111;
+      color: #CCC;
+      border-radius: 3px;
+      padding: 2px;
+      margin: 0 5px 0 5px;
+    }
+    .p {
+      margin:30px 0 0 30px;
+    }
+  </style>
+  <script type="text/javascript" src="turret.js"></script>
+  <script type="text/javascript">
+
+    var set = function(what, p) {
+      document.getElementById('output').innerHTML = document.title = what
+      console.log(p)
+    }
+
+    turret.on('hello', function(previous) {
+      set('Hello!', previous)
+    })
+
+    turret.on('whereareyou', function(previous) {
+      set('Where are you?', previous)
+    })
+
+    turret.on('goodbye', function(previous) {
+      set('Goodbye', previous)
+    })
+  </script>
+</head>
+<body>
+  <div class="p">
+    <h1>turret.js</h1>
+    <h2 id="output"></h2>
+    <p>Try to bring another application in the foreground or switch the tabs and watch the page title</p>
+    <p>include the <code>turret.js</code> file and use it like this</p>
+    <pre>turret.on('hello', function(previous) {
+  //...say('Hallo')
+})</pre>
+  </div>
+</body>
+</html>
